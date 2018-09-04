@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./www:/var/www
+    ports:
+      - "8888:80"
+    links:
+      - mssql
+    restart: always
+
+  mssql:
+    image: "microsoft/mssql-server-linux"
+    environment:
+      - SA_PASSWORD=mssql123
+      - ACCEPT_EULA=Y
+    restart: always
