@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./www:/var/www
+      - ./apache-laravel.conf:/etc/apache2/sites-enabled/000-default.conf
     ports:
       - "8888:80"
     links:
